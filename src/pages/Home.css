@@ -1,0 +1,121 @@
+.banner {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;      
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+.banner::-webkit-scrollbar {
+  display: none;
+}
+
+.banner {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.banner img {
+  height: 300px;         
+  border-radius: 10px;
+  flex-shrink: 0;        
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.banner img:hover {
+  transform: scale(1.03);
+}
+/* ===== FILTER LIST ===== */
+.filter-ul {
+  display: flex;
+  gap: 20px;
+  padding: 12px 20px;
+  background-color: rgb(214, 214, 214); /* match navbar */
+  border-radius: 30px;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.filter-ul li {
+  list-style: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+
+/* Hover effect */
+.filter-ul li:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Active state (for selected filter) */
+.filter-ul li.active {
+  background-color: black;
+  color: white;
+}
+
+/* Section Wrapper */
+.works-section,
+.workers-section {
+  padding: 30px 20px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0b1a33;
+  border-left: 5px solid #0b7a75;
+  padding-left: 10px;
+}
+
+/* Workers Grid */
+.workers {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 0;
+}
+
+/* Worker Card */
+.worker-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.worker-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Worker Name */
+.worker-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Worker Role */
+.worker-role {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+/* Worker Rating */
+.worker-rate {
+  font-size: 14px;
+  color: #f39c12;
+}
