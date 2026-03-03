@@ -1,25 +1,46 @@
 const works = [
   {
     id: 1,
-    title: "Switch Box Installation",
+    title: "John",
     category: "Electrician",
-    price: 99,
-    duration: "20 - 30 minutes"
+    rate: "4.5 stars",
+    des: "Experienced about 3 years"
   },
   {
     id: 2,
-    title: "Broken Pipe Repair",
+    title: "Kumar",
     category: "Plumber",
-    price: 249,
-    duration: "45 - 50 minutes"
+    rate: "4.2 stars",
+    des: "Fully Focused Worker"
   },
   {
     id: 3,
-    title: "Garden Maintenance",
+    title: "Mani",
     category: "Gardener",
-    price: 199,
-    duration: "Per hour"
-  }
+    rate: "4.9 stars",
+    des: "A real time work experienced worker"
+  },
+  {
+    id: 4,
+    title: "Ravi",
+    category: "Electrician",
+    rate: "4.7 stars",
+    des: "Expert in wiring and switch board repairs"
+  },
+  {
+    id: 5,
+    title: "Suresh",
+    category: "Plumber",
+    rate: "4.3 stars",
+    des: "Specialist in pipe fitting and leak fixing"
+  },
+  {
+    id: 6,
+    title: "Arun",
+    category: "Gardener",
+    rate: "4.6 stars",
+    des: "Professional lawn and plant maintenance expert"
+  },
 ];
 
 export default works;
