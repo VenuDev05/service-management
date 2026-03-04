@@ -5,6 +5,9 @@ footer {
   margin-top: 60px;
   border-radius: 10px;
 }
+footer li{
+  list-style: none;
+}
 
 /* Layout */
 footer > div {

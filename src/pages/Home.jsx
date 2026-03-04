@@ -16,13 +16,6 @@ const Home = () => {
                 <img src={banner2} alt="" />
                 <img src={banner3} alt="" />
             </div>
-            <div className="filter">
-                <ul className='filter-ul'>
-                    <li>Electrians</li>
-                    <li>Plumbers</li>
-                    <li>Gardeners</li>
-                </ul>
-            </div>
             <div className="works-section">
                 <h2>Recommended Works</h2>
                 <Filter items={works} />

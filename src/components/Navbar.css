@@ -1,26 +1,95 @@
-.NavbarContainer{
-    border-radius: 10px;
-    background-color: rgb(214, 214, 214);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 5px 10px;
+.NavbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #f2f2f2; 
+  color: #333;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-.logo-ul li{
-    background-color: black;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 30px;
+
+.logo-ul {
+  list-style: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
 }
-.menu-ul{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-li{
-    list-style: none;
-}
-.menu-ul a{
+.logo-ul a{
     text-decoration: none;
     color: black;
+}
+
+.menu-ul {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  align-items: center;
+}
+
+.menu-ul a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.menu-ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+  transition: 0.3s ease;
+}
+
+.menu-ul li::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #5c6bc0; 
+  transition: width 0.3s ease;
+}
+
+.menu-ul li:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+
+  .NavbarContainer {
+    padding: 15px 25px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .menu-ul {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #e6e6e6; 
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 0;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .menu-ul.active {
+    display: flex;
+  }
+
+  .menu-ul li {
+    font-size: 18px;
+  }
 }
