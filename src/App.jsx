@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Category from './pages/Category'
 import Contact from './pages/Contact'
+import EmployeeRegister from './pages/Employee'
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/service' element={<Category/>}/>
         <Route path='/contact' element={<Contact/>} />
+        <Route path='/employee' element={<EmployeeRegister/>} />
       </Routes>
       <Footer/>
       </BrowserRouter>

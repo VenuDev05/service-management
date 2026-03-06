@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Login.css'
+import { Link } from "react-router-dom";
 
 function Login() {
   const [isRegister, setIsRegister] = useState(false);
@@ -48,42 +49,47 @@ function Login() {
     }
   };
 
- return (
-  <div className="auth-container">
-    <div className="auth-card">
-      <h2>{isRegister ? "Create Account" : "Login"}</h2>
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>{isRegister ? "Create Account" : "Login"}</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          required
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-          required
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            required
+          />
 
-        <button type="submit">
-          {isRegister ? "Register" : "Login"}
-        </button>
-      </form>
+          <button type="submit">
+            {isRegister ? "Register" : "Login"}
+          </button>
+        </form>
 
-      <p className="switch-text">
-        {isRegister ? "Already have an account? " : "New user? "}
-        <span onClick={() => setIsRegister(!isRegister)}>
-          {isRegister ? "Login here" : "Register here"}
-        </span>
-      </p>
+        <p className="switch-text">
+          {isRegister ? "Already have an account? " : "New user? "}
+          <span onClick={() => setIsRegister(!isRegister)}>
+            {isRegister ? "Login here" : "Register here"}
+          </span>
+        </p>
+
+        <p>
+          Are you an employee?
+          <Link to="/employee"> Register here</Link>
+        </p>
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Login;

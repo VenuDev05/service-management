@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import banner1 from '../images/img1.jpeg'
 import banner2 from '../images/img2.jpeg'
 import banner3 from '../images/img3.jpeg'
@@ -9,6 +9,13 @@ import workers from '../workers'
 import Workerslist from './Workerlist'
 
 const Home = () => {
+    const [workers, setWorkers] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost/New folder/get_workers.php")
+            .then((res) => res.json())
+            .then((data) => setWorkers(data));
+    }, []);
     return (
         <div>
             <div className="banner">

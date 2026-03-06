@@ -41,10 +41,8 @@ const Workerslist = ({ items = [] }) => {
         <ul className="worker-list">
             {items.map((item) => (
                 <li key={item.id}>
-                    <h3 className='worker-title'>{item.title}</h3>
-                    <p className='worker-role'>Category: {item.category}</p>
-                    <p className='worker-price'>⭐{item.rate}</p>
-                    <span className='worker-time'>{item.des}</span>
+                    <h3 className="worker-title">{item.name}</h3>
+                    <p className="worker-role">Category: {item.job}</p>
 
                     <button
                         className="book-btn"
