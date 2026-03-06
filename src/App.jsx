@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Category from './pages/Category'
+import Contact from './pages/Contact'
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/service' element={<Category/>}/>
+        <Route path='/contact' element={<Contact/>} />
       </Routes>
       <Footer/>
       </BrowserRouter>

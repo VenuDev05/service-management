@@ -19,7 +19,12 @@
     text-decoration: none;
     color: black;
 }
-
+.logo-ul span{
+  color: rgb(8, 221, 8);
+}
+.logo-ul li{
+  color: rgb(247, 135, 154);
+}
 .menu-ul {
   display: flex;
   gap: 35px;

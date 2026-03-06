@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className='NavbarContainer'>
       
       <ul className='logo-ul'>
-        <Link to='/'><li>LV</li></Link>
+        <Link to='/'><li>Local<span>View</span></li></Link>
       </ul>
 
       {/* Hamburger Icon */}
@@ -20,7 +20,7 @@ const Navbar = () => {
       <ul className={`menu-ul ${isOpen ? "active" : ""}`}>
         <Link to='/' onClick={() => setIsOpen(false)}><li>Home</li></Link>
         <Link to='/service' onClick={() => setIsOpen(false)}><li>Services</li></Link>
-        <li>Contact</li>
+        <Link to='/contact' onClick={() => setIsOpen(false)}><li>Contact</li></Link>
         <Link to='/login' onClick={() => setIsOpen(false)}><li>Login</li></Link>
       </ul>
 
