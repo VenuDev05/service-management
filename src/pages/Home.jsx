@@ -1,28 +1,48 @@
-import React, {useState, useEffect} from 'react'
 import banner1 from '../images/img1.jpeg'
 import banner2 from '../images/img2.jpeg'
 import banner3 from '../images/img3.jpeg'
+
 import './Home.css'
 import Filter from './Service'
 import works from '../Works'
-import workers from '../workers'
 import Workerslist from './Workerlist'
 
+import { db } from "../firebase"
+import { collection, onSnapshot } from "firebase/firestore"
+import { useEffect, useState } from "react"
+
 const Home = () => {
-    const [workers, setWorkers] = useState([]);
+
+    const [workers, setWorkers] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost/New folder/get_workers.php")
-            .then((res) => res.json())
-            .then((data) => setWorkers(data));
-    }, []);
+
+        const unsubscribe = onSnapshot(
+            collection(db, "workers"),
+            (snapshot) => {
+
+                const workerList = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+
+                setWorkers(workerList)
+            }
+        )
+
+        return () => unsubscribe()
+
+    }, [])
+
     return (
         <div>
+
             <div className="banner">
-                <img src={banner1} alt="" />
-                <img src={banner2} alt="" />
-                <img src={banner3} alt="" />
+                <img src={banner1} alt="banner1" />
+                <img src={banner2} alt="banner2" />
+                <img src={banner3} alt="banner3" />
             </div>
+
             <div className="works-section">
                 <h2>Recommended Works</h2>
                 <Filter items={works} />
@@ -32,6 +52,7 @@ const Home = () => {
                 <h2>Our Workers</h2>
                 <Workerslist items={workers} />
             </div>
+
         </div>
     )
 }
