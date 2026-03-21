@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-import mobLogo from '../images/mob-logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
