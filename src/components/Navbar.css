@@ -70,7 +70,15 @@
   cursor: pointer;
   color: #333;
 }
+.user-menu {
+  cursor: pointer;
+  font-weight: 600;
+  color: #0b7a75;
+}
 
+.user-menu:hover {
+  color: #075e5b;
+}
 @media (max-width: 768px) {
 
   #mobile-logo{

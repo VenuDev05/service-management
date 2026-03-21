@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './Login.css'
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -13,7 +13,7 @@ function Login() {
   const [isRegister, setIsRegister] = useState(false);
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,17 +21,16 @@ function Login() {
 
       if (isRegister) {
 
-        await createUserWithEmailAndPassword(auth, user, pass);
-
+        const userCredential = await createUserWithEmailAndPassword(auth, user, pass);
+        localStorage.setItem("uid", userCredential.user.uid);
         alert("Account created successfully ✅");
         setIsRegister(false);
 
       } else {
-
-        await signInWithEmailAndPassword(auth, user, pass);
-
+        const userCredential = await signInWithEmailAndPassword(auth, user, pass);
         alert("Login successful ✅");
-        localStorage.setItem("user", user);
+        localStorage.setItem("uid", userCredential.user.uid);
+        navigate("/");
 
       }
 
