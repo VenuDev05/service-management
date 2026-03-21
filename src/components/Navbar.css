@@ -9,6 +9,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+#mobile-logo{
+  display: none;
+}
+
 .logo-ul {
   list-style: none;
   font-size: 24px;
@@ -68,6 +72,14 @@
 }
 
 @media (max-width: 768px) {
+
+  #mobile-logo{
+    font-size: 30px;
+    display: block;
+  }
+  #lap-logo{
+    display: none;
+  }
 
   .NavbarContainer {
     padding: 15px 25px;

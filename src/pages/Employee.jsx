@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc, doc } from "firebase/firestore";
 
 function EmployeeRegister() {
 
@@ -24,28 +26,41 @@ function EmployeeRegister() {
       return;
     }
 
-    const response = await fetch("http://localhost/New folder/register_employee.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        pass,
-        job,
-        lat,
-        lng
-      })
-    });
+    try {
 
-    const data = await response.json();
+      let jobRole = document.querySelector('#job-role').value
 
-    if (data.status === "success") {
+      if(jobRole!='Plumber' && jobRole!='Electrition' && jobRole!='Gardener'){
+        alert("Your Job Role is invalid")
+        return;
+      }
+      await addDoc(collection(db, "workers"), {
+        name: name,
+        email: email,
+        password: pass,
+        job: job,
+        latitude: lat,
+        longitude: lng
+      });
+
       alert("Employee Registered Successfully");
-    } else {
+
+      // clear form
+      setName("");
+      setEmail("");
+      setPass("");
+      setJob("");
+      setLat("");
+      setLng("");
+
+    } catch (error) {
+
+      console.error(error);
       alert("Registration Failed");
+
     }
+
+
   };
 
   return (
@@ -81,8 +96,9 @@ function EmployeeRegister() {
           />
 
           <input
+            id="job-role"
             type="text"
-            placeholder="Job Type"
+            placeholder="Plumber, Electrition, Gardener"
             value={job}
             onChange={(e) => setJob(e.target.value)}
             required

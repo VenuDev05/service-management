@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
+import mobLogo from '../images/mob-logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -9,7 +10,8 @@ const Navbar = () => {
     <div className='NavbarContainer'>
       
       <ul className='logo-ul'>
-        <Link to='/'><li>Local<span>View</span></li></Link>
+        <Link to='/'><li id='lap-logo'>Local<span>View</span></li></Link>
+        <Link to='/'><li id='mobile-logo'>L<span>V</span></li></Link>
       </ul>
 
       {/* Hamburger Icon */}
