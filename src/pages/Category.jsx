@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Electrician, Plumber, Gardener } from "../Totalwork";
 import CategoryServices from "../components/Categorydata";
 import '../components/Categorydata.css'
+import { Link } from "react-router-dom";
 
 function Category() {
   const [category, setCategory] = useState("Electrician");
@@ -27,8 +28,9 @@ function Category() {
           </button>
         ))}
       </div>
-
+      <Link to='/book'>
       <CategoryServices data={servicesData[category]} />
+      </Link>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+*{
+  text-decoration: none;
+}
 /* Container UL */
 .works {
   list-style: none;

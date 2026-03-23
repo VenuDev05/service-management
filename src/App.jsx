@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Category from './pages/Category'
 import Contact from './pages/Contact'
 import EmployeeRegister from './pages/Employee'
+import BookWork from './pages/BookWork'
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/service' element={<Category/>}/>
         <Route path='/contact' element={<Contact/>} />
         <Route path='/employee' element={<EmployeeRegister/>} />
+        <Route path='/book' element={<BookWork/>} />
       </Routes>
       <Footer/>
       </BrowserRouter>

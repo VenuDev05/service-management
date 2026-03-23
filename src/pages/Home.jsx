@@ -10,6 +10,7 @@ import Workerslist from './Workerlist'
 import { db } from "../firebase"
 import { collection, onSnapshot } from "firebase/firestore"
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -34,6 +35,28 @@ const Home = () => {
 
     }, [])
 
+    const [bookings, setBookings] = useState([]);
+
+    useEffect(() => {
+
+        const unsubscribe = onSnapshot(
+            collection(db, "bookings"),
+            (snapshot) => {
+
+                const bookingList = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+
+                setBookings(bookingList);
+            }
+        );
+
+        return () => unsubscribe();
+
+    }, []);
+
+
     return (
         <div>
 
@@ -45,7 +68,9 @@ const Home = () => {
 
             <div className="works-section">
                 <h2>Recommended Works</h2>
-                <Filter items={works} />
+                <Link to='/book'>
+                    <Filter items={works} />
+                </Link>
             </div>
 
             <div className="workers-section">

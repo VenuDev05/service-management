@@ -1,0 +1,66 @@
+/* Container */
+.book-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Title */
+.book-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Select dropdown */
+.book-container select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.book-container select:focus {
+  border-color: #4CAF50;
+}
+
+/* Buttons */
+.book-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #4CAF50;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-container button:hover {
+  background: #45a049;
+}
+
+/* Location text */
+.book-container p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .book-container {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+}
