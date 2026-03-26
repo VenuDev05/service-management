@@ -6,9 +6,11 @@ import {
   addDoc
 } from "firebase/firestore";
 import "./BookWork.css";
+import { useNavigate } from "react-router-dom";
 
 const BookService = () => {
-
+  
+  const navigate = useNavigate();
   const [workers, setWorkers] = useState([]);
   const [selectedJob, setSelectedJob] = useState("");
   const [lat, setLat] = useState(null);
@@ -17,7 +19,10 @@ const BookService = () => {
   const [nearbyWorkers, setNearbyWorkers] = useState([]);
   const [selectedWorker, setSelectedWorker] = useState(null);
 
-  // ✅ Fetch workers (real-time)
+  const [clientName, setClientName] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
+
+  // ✅ Fetch workers
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "workers"),
@@ -33,7 +38,7 @@ const BookService = () => {
     return () => unsubscribe();
   }, []);
 
-  // ✅ Get user location
+  // ✅ Get location
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
       setLat(Number(pos.coords.latitude));
@@ -41,7 +46,7 @@ const BookService = () => {
     });
   };
 
-  // ✅ Distance calculation
+  // ✅ Distance function
   const getDistance = (lat1, lon1, lat2, lon2) => {
     const R = 6371;
 
@@ -102,8 +107,13 @@ const BookService = () => {
     setNearbyWorkers(workersWithDistance);
   };
 
-  // ✅ Confirm booking
+  // ✅ Booking
   const handleBooking = async () => {
+
+    if (!clientName || !clientAddress) {
+      alert("Please enter your name and address");
+      return;
+    }
 
     if (!selectedWorker) {
       alert("Please select a worker");
@@ -117,6 +127,9 @@ const BookService = () => {
         workerId: selectedWorker.id,
         workerName: selectedWorker.name,
 
+        clientName: clientName,
+        clientAddress: clientAddress,
+
         clientLat: lat,
         clientLng: lng,
 
@@ -126,9 +139,15 @@ const BookService = () => {
 
       alert(`Booking confirmed with ${selectedWorker.name}`);
 
-      // reset after booking
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+
+      // reset
       setSelectedWorker(null);
       setNearbyWorkers([]);
+      setClientName("");
+      setClientAddress("");
 
     } catch (error) {
       console.error(error);
@@ -140,6 +159,20 @@ const BookService = () => {
     <div className="book-container">
 
       <h2>Book a Service</h2>
+
+      {/* Client Details */}
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={clientName}
+        onChange={(e) => setClientName(e.target.value)}
+      />
+
+      <textarea
+        placeholder="Enter your address"
+        value={clientAddress}
+        onChange={(e) => setClientAddress(e.target.value)}
+      />
 
       {/* Job Selection */}
       <select
@@ -176,9 +209,8 @@ const BookService = () => {
         {nearbyWorkers.map((worker) => (
           <div
             key={worker.id}
-            className={`worker-card ${
-              selectedWorker?.id === worker.id ? "active" : ""
-            }`}
+            className={`worker-card ${selectedWorker?.id === worker.id ? "active" : ""
+              }`}
             onClick={() => setSelectedWorker(worker)}
           >
             <h3>{worker.name}</h3>
@@ -191,7 +223,7 @@ const BookService = () => {
       {/* Confirm Booking */}
       {selectedWorker && (
         <button onClick={handleBooking}>
-          Confirm Booking
+          Confirm Booking on {selectedWorker.name}
         </button>
       )}
 

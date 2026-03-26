@@ -87,7 +87,7 @@ function Login() {
 
         <p>
           Are you an employee?
-          <Link to="/employee"> Register here</Link>
+          <Link to="/employee" id="reg"> Register here</Link>
         </p>
 
       </div>

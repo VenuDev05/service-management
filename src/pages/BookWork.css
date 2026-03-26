@@ -57,10 +57,54 @@
   color: #555;
 }
 
+.worker-list:hover{
+  cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .book-container {
     margin: 30px 15px;
     padding: 20px;
   }
+}
+
+/* Input & Textarea Base */
+.book-container input,
+.book-container textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Focus Effect */
+.book-container input:focus,
+.book-container textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+}
+
+/* Placeholder Style */
+.book-container input::placeholder,
+.book-container textarea::placeholder {
+  color: #999;
+  font-size: 13px;
+}
+
+/* Textarea Specific */
+.book-container textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* Hover Effect */
+.book-container input:hover,
+.book-container textarea:hover {
+  border-color: #888;
 }
